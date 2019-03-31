@@ -57,7 +57,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkZ-rJ-6Nm">
                                                     <rect key="frame" x="20" y="5" width="335" height="76"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh4-vw-IT0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh4-vw-IT0">
                                                             <rect key="frame" x="10" y="10" width="315" height="56"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,7 +136,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="G76-MU-jHF" firstAttribute="top" secondItem="ioT-6N-3n4" secondAttribute="top" id="As3-Qz-A4K"/>
-                            <constraint firstItem="05I-6P-Ju4" firstAttribute="bottom" secondItem="piu-oe-iGI" secondAttribute="bottom" constant="55" id="Ed1-7R-dw7"/>
                             <constraint firstItem="G76-MU-jHF" firstAttribute="leading" secondItem="05I-6P-Ju4" secondAttribute="leading" id="H2j-12-HaS"/>
                             <constraint firstItem="piu-oe-iGI" firstAttribute="trailing" secondItem="05I-6P-Ju4" secondAttribute="trailing" id="HyO-W4-4Kr"/>
                             <constraint firstItem="piu-oe-iGI" firstAttribute="top" secondItem="G76-MU-jHF" secondAttribute="bottom" id="I6L-Go-fIQ"/>
@@ -149,6 +148,7 @@
                             <constraint firstItem="piu-oe-iGI" firstAttribute="leading" secondItem="05I-6P-Ju4" secondAttribute="leading" id="mcZ-54-CC2"/>
                             <constraint firstItem="BXv-sq-qXI" firstAttribute="bottom" secondItem="05I-6P-Ju4" secondAttribute="bottom" id="vmH-bX-4Ig"/>
                             <constraint firstItem="2D0-pS-0em" firstAttribute="top" secondItem="05I-6P-Ju4" secondAttribute="top" id="wmZ-zw-8p6"/>
+                            <constraint firstItem="rCF-ZK-5Um" firstAttribute="top" secondItem="piu-oe-iGI" secondAttribute="bottom" constant="5" id="xVp-oC-4HS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="05I-6P-Ju4"/>
                     </view>

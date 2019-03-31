@@ -9,11 +9,9 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-
+    
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
-    
-    @IBOutlet weak var textviewMessage: UITextView!
     
     @IBOutlet weak var viewMessage: UIView!
     
@@ -25,13 +23,17 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var viewHeader: UIView!
     
+    @IBOutlet weak var textviewMessage: UITextView!
+    
+    var viewModel = ChatViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerForKeyboardNotifications()
         textviewMessage.setCorners()
-        textviewMessage.setPadding()
         textviewMessage.setPlaceholder()
+        viewHeader.setGradient()
         sendButton(isEnabled: false)
     }
     
@@ -41,6 +43,22 @@ class ChatViewController: UIViewController {
     
     @IBAction func btnSendClicked(_ sender: UIButton) {
         
+        guard var text = textviewMessage.text else { return }
+        text = text.trim()
+        viewModel.addMessage(text) { [weak self] (errorMessage) in
+            
+            if errorMessage != nil {
+                self?.showAlert(for: errorMessage!)
+                
+            } else {
+                self?.tblView.reloadData()
+                self?.tblView.scrollToLastRow(count: self?.viewModel.getMessageCount() ?? 0)
+                self?.sendButton(isEnabled: false)
+                self?.constraintHeightTextView.constant = Constants.MAX_MESSAGE_HEIGHT
+                self?.textviewMessage.text = ""
+                self?.textviewMessage.checkPlaceholder()
+            }
+        }
     }
     
     //MARK:- Handle UI and UITableView on keyboard show/hide
@@ -59,17 +77,10 @@ class ChatViewController: UIViewController {
             
             if endFrameY >= UIScreen.main.bounds.size.height {  //Keyboard is hidden
                 self.keyboardHeightLayoutConstraint?.constant = 0.0
-                let edgeInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                tblView.contentInset = edgeInset
-                tblView.scrollIndicatorInsets = edgeInset
-                
             } else {    //Keyboard is shown
                 self.keyboardHeightLayoutConstraint?.constant = -(endFrame?.size.height)!
                 
-                let edgeInset = UIEdgeInsets(top: 0, left: 0, bottom: (endFrame?.size.height)!, right: 0)
-                tblView.contentInset = edgeInset
-                tblView.scrollIndicatorInsets = edgeInset
-                
+                tblView.scrollToLastRow(count: viewModel.getMessageCount())
             }
             
             UIView.animate(withDuration: duration, delay: TimeInterval(0), options: animationCurve, animations: {
@@ -89,11 +100,12 @@ class ChatViewController: UIViewController {
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.getMessageCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageCell.className) as? MessageCell
+        cell?.setText(text: viewModel.getMessage(at: indexPath.row))
         return cell!
     }
 }
@@ -103,6 +115,8 @@ extension ChatViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textView.checkPlaceholder()
+        
+        animateTextViewHeight()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
@@ -121,27 +135,27 @@ extension ChatViewController: UITextViewDelegate {
             sendButton(isEnabled: true)
         }
         
-        //Dynamic height of textview and scroll after limiting to a specific height
-        let cursorPosition = textView.caretRect(for: textviewMessage.selectedTextRange!.start).origin
+        return true
+    }
+    
+    //Dynamic height of textview and scroll after limiting to a specific height
+    func animateTextViewHeight() {
+        let cursorPosition = textviewMessage.caretRect(for: textviewMessage.selectedTextRange!.start).origin
         let currentLine = Int(cursorPosition.y / self.textviewMessage.font!.lineHeight)
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
             if currentLine == 0 {
-                self.constraintHeightTextView.constant = Constants.MAX_MESSAGE_HEIGHT
-            }else {
+                self?.constraintHeightTextView.constant = Constants.MAX_MESSAGE_HEIGHT
+            } else {
                 if currentLine >= 3 {
-                    self.textviewMessage.isScrollEnabled = true
-                    self.constraintHeightTextView.constant = 2 * Constants.MAX_MESSAGE_HEIGHT
+                    self?.textviewMessage.isScrollEnabled = true
+                    self?.constraintHeightTextView.constant = 2 * Constants.MAX_MESSAGE_HEIGHT
                     
                 } else {
-                    //                    self.textviewMessage.isScrollEnabled = false
-                    self.constraintHeightTextView.constant = self.textviewMessage.contentSize.height + 8 // Padding
+                    self?.constraintHeightTextView.constant = self?.textviewMessage.contentSize.height ?? Constants.MAX_MESSAGE_HEIGHT
                 }
             }
+            self?.view.layoutIfNeeded()
         }
-        textviewMessage.layoutIfNeeded()
-        self.view.updateConstraints()
-        
-        return true
     }
 }

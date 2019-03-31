@@ -22,8 +22,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Message Split App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lL-87-d3H">
-                                <rect key="frame" x="10" y="320" width="355" height="27.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-BlackOblique" family="Avenir" pointSize="20"/>
+                                <rect key="frame" x="10" y="320" width="355" height="37.5"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -40,7 +40,7 @@
                             <constraint firstItem="kzB-Pk-aIi" firstAttribute="centerX" secondItem="Hjh-iy-JM8" secondAttribute="centerX" id="6rH-sP-2Ex"/>
                             <constraint firstItem="Hjh-iy-JM8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8ML-jS-eYy"/>
                             <constraint firstItem="3lL-87-d3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Kch-QQ-30S"/>
-                            <constraint firstItem="3lL-87-d3H" firstAttribute="centerY" secondItem="Hjh-iy-JM8" secondAttribute="centerY" id="LL2-lQ-Gym"/>
+                            <constraint firstItem="3lL-87-d3H" firstAttribute="centerY" secondItem="Hjh-iy-JM8" secondAttribute="centerY" constant="5" id="LL2-lQ-Gym"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3lL-87-d3H" secondAttribute="trailing" constant="10" id="U9u-TY-fYY"/>
                             <constraint firstItem="Hjh-iy-JM8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dUs-Eu-7PJ"/>
                             <constraint firstItem="Hjh-iy-JM8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mHB-ah-Y9P"/>
