@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2936EE8C2250B4BF002CCB2C /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936EE8B2250B4BF002CCB2C /* AppExtensions.swift */; };
+		2936EE8E2250B552002CCB2C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936EE8D2250B552002CCB2C /* MessageCell.swift */; };
+		2936EE902250B605002CCB2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936EE8F2250B605002CCB2C /* Constants.swift */; };
 		298CF8A9225022DC00F977E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CF8A8225022DC00F977E5 /* AppDelegate.swift */; };
-		298CF8AB225022DC00F977E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CF8AA225022DC00F977E5 /* ViewController.swift */; };
+		298CF8AB225022DC00F977E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CF8AA225022DC00F977E5 /* ChatViewController.swift */; };
 		298CF8AE225022DC00F977E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298CF8AC225022DC00F977E5 /* Main.storyboard */; };
 		298CF8B0225022DD00F977E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298CF8AF225022DD00F977E5 /* Assets.xcassets */; };
 		298CF8B3225022DD00F977E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298CF8B1225022DD00F977E5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2936EE8B2250B4BF002CCB2C /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		2936EE8D2250B552002CCB2C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		2936EE8F2250B605002CCB2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		298CF8A5225022DC00F977E5 /* ChatMessageSplitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatMessageSplitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		298CF8A8225022DC00F977E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		298CF8AA225022DC00F977E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		298CF8AA225022DC00F977E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		298CF8AD225022DC00F977E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		298CF8AF225022DD00F977E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		298CF8B2225022DD00F977E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				298CF8A8225022DC00F977E5 /* AppDelegate.swift */,
-				298CF8AA225022DC00F977E5 /* ViewController.swift */,
+				298CF8AA225022DC00F977E5 /* ChatViewController.swift */,
+				2936EE8B2250B4BF002CCB2C /* AppExtensions.swift */,
+				2936EE8D2250B552002CCB2C /* MessageCell.swift */,
+				2936EE8F2250B605002CCB2C /* Constants.swift */,
 				298CF8AC225022DC00F977E5 /* Main.storyboard */,
 				298CF8AF225022DD00F977E5 /* Assets.xcassets */,
 				298CF8B1225022DD00F977E5 /* LaunchScreen.storyboard */,
@@ -135,7 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				298CF8AB225022DC00F977E5 /* ViewController.swift in Sources */,
+				2936EE902250B605002CCB2C /* Constants.swift in Sources */,
+				2936EE8C2250B4BF002CCB2C /* AppExtensions.swift in Sources */,
+				2936EE8E2250B552002CCB2C /* MessageCell.swift in Sources */,
+				298CF8AB225022DC00F977E5 /* ChatViewController.swift in Sources */,
 				298CF8A9225022DC00F977E5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ChatMessageSplitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ChatMessageSplitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
