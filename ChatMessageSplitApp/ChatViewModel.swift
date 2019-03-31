@@ -43,49 +43,47 @@ class ChatViewModel {
             return
         }
         
-        var string = ""
-        var array = [String]()
+        var letters = ""
+        var msgChunks = [String]()
         for (index, character) in message.enumerated() {
-            if index > 0, string.count % Constants.MAX_EACH_TWEET_SIZE == 0 {
-                if character == " " {
-                    array.append(string)
-                    string = ""
-                    string.append(character)
+            if index > 0, letters.count % Constants.MAX_EACH_TWEET_SIZE == 0 {
+                if character == " " {       //If 50th character is a whitespace
+                    msgChunks.append(letters)
+                    letters = ""
                 } else {
-                    var newString = ""
-                    while string.count > 0, string.last != " " {
-                        let char = string.removeLast()
-                        newString.append(char)
+                    var extraLetters = ""
+                    while letters.count > 0, letters.last != " " {  //Remove characters until a whitespace is encountered from left
+                        let char = letters.removeLast()
+                        extraLetters.append(char)
                     }
-                    if string.count > 0 {
-                        array.append(string)
-                        string = ""
-                        string.append(String(newString.reversed()))
-                        string.append(character)
-                        
-                    } else {
-                        array.removeAll()
+                    if letters.count > 0 {          //Append when we get a whitespace
+                        msgChunks.append(letters)
+                        letters = ""
+                        letters.append(String(extraLetters.reversed()))
+                    } else {                    //No whitespace found
+                        msgChunks.removeAll()
                         break
                     }
                 }
-            } else {
-                string.append(character)
             }
-            if index == message.count - 1, string.count > 0 {
-                array.append(string)
+            letters.append(character)
+            
+            if index == message.count - 1, letters.count > 0 {   //If remaining characters are less than 50, append as is
+                msgChunks.append(letters)
             }
-        }
-        var newArray = [String]()
-        for (index, value) in array.enumerated() {
-            var newValue = "\(index+1)/\(array.count) "
-            newValue.append(value)
-            newArray.append(newValue)
         }
         
-        if newArray.isEmpty {
+        var msgChunkWithIndicator = [String]()
+        for (index, letter) in msgChunks.enumerated() {
+            var indicator = "\(index+1)/\(msgChunks.count) "
+            indicator.append(letter)
+            msgChunkWithIndicator.append(indicator)
+        }
+        
+        if msgChunkWithIndicator.isEmpty {
             completionHandler(Constants.Enter_Space)
         } else {
-            arrMessages.append(contentsOf: newArray)
+            arrMessages.append(contentsOf: msgChunkWithIndicator)
             completionHandler(nil)
         }
     }
